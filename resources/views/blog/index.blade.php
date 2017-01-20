@@ -3,7 +3,8 @@
 
 <a href="blog/create">Dodaj nowy post</a>
 
-@foreach($blogs as $data)
+
+@foreach($blogs->reverse() as $data)
     <h2><a href="blog/show/{{ $data->id }}">{{ $data -> title }}</a></h2>
     <p>{{ $data->post }} </p>
     <p>{{ $data->author }} </p>
