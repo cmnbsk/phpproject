@@ -84,8 +84,10 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div id="cont">
+            @yield('content')
+        </div>
+        {{--@yield('content')--}}
     </div>
 
     <!-- Scripts -->

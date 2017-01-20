@@ -9,6 +9,10 @@
     vertical-align: baseline
 }
 
+#cont{
+    margin: 3%;
+}
+
 hr, img {
     border: 0
 }
