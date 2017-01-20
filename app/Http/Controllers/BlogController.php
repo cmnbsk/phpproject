@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -14,8 +15,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
-        return view('blog.index', ['blogs' => $blogs]);
+
+        if (Auth::check()) {
+            $blogs = Blog::all();
+            return view('blog.index', ['blogs' => $blogs]);
+        }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -25,7 +32,12 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        if (Auth::check()) {
+            return view('blog.create');
+        }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -36,20 +48,25 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $this -> validate($request, [
-            'title' => 'required',
-            'post' => 'required',
-            'author' => 'required',
-        ]);
+        if (Auth::check()) {
+            $this->validate($request, [
+                'title' => 'required',
+                'post' => 'required',
+                'author' => 'required',
+            ]);
 
-        $blog = new Blog;
-        $blog -> title = $request -> title;
-        $blog -> post = $request -> post;
-        $blog -> author = $request -> author;
-        $blog -> updated_at = $request -> updated_at;
-        $blog -> created_at = $request -> created_at;
-        $blog -> save();
-        return redirect('blog') -> with('message', 'Post został utworzony.');
+            $blog = new Blog;
+            $blog->title = $request->title;
+            $blog->post = $request->post;
+            $blog->author = $request->author;
+            $blog->updated_at = $request->updated_at;
+            $blog->created_at = $request->created_at;
+            $blog->save();
+            return redirect('blog')->with('message', 'Post został utworzony.');
+        }
+    else{
+        return view('errors.notLoggedIn');
+    }
     }
 
     /**
@@ -60,11 +77,16 @@ class BlogController extends Controller
      */
     public function show($id)
     {
+        if (Auth::check()) {
         $blog = Blog::find($id);
         if(!$blog){
             abort(404);
         }
         return view('blog.details') -> with('detailpage', $blog);
+        }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -75,11 +97,16 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::find($id);
-        if(!$blog){
-            abort(404);
+        if (Auth::check()) {
+            $blog = Blog::find($id);
+            if (!$blog) {
+                abort(404);
+            }
+            return view('blog.edit')->with('detailpage', $blog);
         }
-        return view('blog.edit') -> with('detailpage', $blog);
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -91,16 +118,21 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this -> validate($request, [
-            'title' => 'required',
-            'post' => 'required',
-        ]);
+        if (Auth::check()) {
+            $this->validate($request, [
+                'title' => 'required',
+                'post' => 'required',
+            ]);
 
-        $blog = Blog::find($id);
-        $blog -> title = $request -> title;
-        $blog -> post = $request -> post;
-        $blog -> save();
-        return redirect('blog') -> with('message', 'Post został wyedytowany.');
+            $blog = Blog::find($id);
+            $blog->title = $request->title;
+            $blog->post = $request->post;
+            $blog->save();
+            return redirect('blog')->with('message', 'Post został wyedytowany.');
+        }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -111,8 +143,13 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = Blog::find($id);
-        $blog -> delete();
-        return redirect('blog') -> with('message', 'Post został usunięty.');
+        if (Auth::check()) {
+            $blog = Blog::find($id);
+            $blog->delete();
+            return redirect('blog')->with('message', 'Post został usunięty.');
+        }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 }
