@@ -26,15 +26,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function login_in()
-    {
-        return view('auth.login');
-    }
-    public function logouts()
-    {
-       Auth::logout();
-       return view('/logout');
-
-    }
 
 }

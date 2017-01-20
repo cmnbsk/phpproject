@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>Dodaj nowy post</h1>
     <form class="" action="{{ action('BlogController@store') }}" method="post">
 
@@ -10,3 +13,4 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="submit" name="_name" value="Dodaj">
     </form>
+@endsection

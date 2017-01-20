@@ -35,8 +35,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/blog') }}">
+                        Strona główna
                     </a>
                 </div>
 
@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                             <div class="containter-fluid">
                                 <ul class="nav navbar-nav">
-                                    <li style="..."><a href="">nav1</a></li>
+                                    <li><a href="">nav1</a></li>
                                     <li><a href="">nav2</a></li>
                                     <li><a href="">nav3</a></li>
                                     <li><a href="">nav4</a></li>
