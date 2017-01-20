@@ -1,4 +1,5 @@
 <h1>Szczegóły</h1>
+<p> Dodano {{ $detailpage -> created_at }}</p>
 <h2>{{ $detailpage -> title }}</h2>
 <p>
     {{ $detailpage -> post }}
