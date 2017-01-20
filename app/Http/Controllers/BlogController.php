@@ -16,15 +16,10 @@ class BlogController extends Controller
     public function index()
     {
 
-        if (Auth::check()) {
+
             $blogs = Blog::all();
             return view('blog.index', ['blogs' => $blogs]);
-        }
-        else{
-            $blogs = Blog::all();
-            return view('blog.index', ['blogs' => $blogs]);
-//            return view('errors.notLoggedIn');
-        }
+
     }
 
     /**
@@ -79,16 +74,14 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        if (Auth::check()) {
+
         $blog = Blog::find($id);
         if(!$blog){
             abort(404);
         }
         return view('blog.details') -> with('detailpage', $blog);
-        }
-        else{
-            return view('errors.notLoggedIn');
-        }
+
+
     }
 
     /**
