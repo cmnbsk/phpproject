@@ -23,3 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('blog', 'BlogController@index');
+Route::get('blog/create', 'BookController@create');
+Route::get('blog/show/{id}', 'BlogController@show');
+Route::get('blog/edit/{id}', 'BookController@edit');
+Route::get('blog/destroy/{id}', 'BookController@destroy');
+Route::post('blog/store', 'BookController@store');
+Route::post('blog/update', 'BookController@update');

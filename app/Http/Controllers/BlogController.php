@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
 
 class BlogController extends Controller
 {
@@ -44,7 +45,7 @@ class BlogController extends Controller
         $blog -> title = $request -> title;
         $blog -> post = $request -> post;
         $blog -> save();
-        return redirect('blog') -> with('message', 'Post został utowrzony.');
+        return redirect('blog') -> with('message', 'Post został utworzony.');
     }
 
     /**

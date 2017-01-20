@@ -1,7 +1,7 @@
 {{ Session::get('message') }}
-    <h1>Mój blog</h1>
+<h1>Mój blog</h1>
 
-    @foreach($blogs as $data)
+@foreach($blogs as $data)
     <h2><a href="blog/{{ $data->id }}">{{ $data -> title }}</a></h2>
     <p>{{ $data -> post }} </p>
     <a href="blog/{{ $data->id }}/edit">Edytuj post</a>
@@ -9,4 +9,6 @@
         <input type="hidden" name="method" value="delete">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="submit" name="name" value="post">
-</form>
+    </form>
+    <hr>
+@endforeach
