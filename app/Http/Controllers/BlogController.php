@@ -46,6 +46,7 @@ class BlogController extends Controller
         $blog -> title = $request -> title;
         $blog -> post = $request -> post;
         $blog -> author = $request -> author;
+        $blog -> updated_at = $request -> updated_at;
         $blog -> save();
         return redirect('blog') -> with('message', 'Post został utworzony.');
     }
