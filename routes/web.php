@@ -23,6 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'HomeController@logouts');
 
 Route::get('blog', 'BlogController@index');
 Route::get('blog/create', 'BlogController@create');

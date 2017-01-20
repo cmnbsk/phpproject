@@ -21,7 +21,9 @@ class BlogController extends Controller
             return view('blog.index', ['blogs' => $blogs]);
         }
         else{
-            return view('errors.notLoggedIn');
+            $blogs = Blog::all();
+            return view('blog.index', ['blogs' => $blogs]);
+//            return view('errors.notLoggedIn');
         }
     }
 
