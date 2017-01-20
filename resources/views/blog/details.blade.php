@@ -6,4 +6,4 @@
 <p>
     {{ $detailpage -> author }}
 </p>
-<a href="/blog">Wróć do strony głównej</a>
+<a href="{{@action('BlogController@index')}}">Wróć do strony głównej</a>
