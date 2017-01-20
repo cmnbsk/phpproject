@@ -39,11 +39,13 @@ class BlogController extends Controller
         $this -> validate($request, [
             'title' => 'required',
             'post' => 'required',
+            'author' => 'required',
         ]);
 
         $blog = new Blog;
         $blog -> title = $request -> title;
         $blog -> post = $request -> post;
+        $blog -> author = $request -> author;
         $blog -> save();
         return redirect('blog') -> with('message', 'Post został utworzony.');
     }

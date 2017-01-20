@@ -1,5 +1,5 @@
 <h1>Edytuj post</h1>
-<form class="" action="/blog/{{ $detailpage->id }}" method="post">
+<form class="" action="{{ action('BlogController@update', $detailpage->id) }}" method="post">
     <input type="text" name="title" value="{{ $detailpage->title }}" placeholder="Tytuł">
     {{ ($errors->has('title')) ? $errors->first('title') : '' }}<br>
     <textarea name="post" rows="8" cols="40" placeholder="Opis">{{ $detailpage->post }}</textarea>

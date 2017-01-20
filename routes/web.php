@@ -25,9 +25,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('blog', 'BlogController@index');
-Route::get('blog/create', 'BookController@create');
+Route::get('blog/create', 'BlogController@create');
 Route::get('blog/show/{id}', 'BlogController@show');
-Route::get('blog/edit/{id}', 'BookController@edit');
-Route::get('blog/destroy/{id}', 'BookController@destroy');
-Route::post('blog/store', 'BookController@store');
-Route::post('blog/update', 'BookController@update');
+Route::get('blog/edit/{id}', 'BlogController@edit');
+Route::delete('blog/destroy/{id}', 'BlogController@destroy');
+Route::post('blog/store', 'BlogController@store');
+Route::put('blog/{id}', 'BlogController@update');
