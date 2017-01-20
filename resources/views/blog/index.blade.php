@@ -4,7 +4,7 @@
 <a href="blog/create">Dodaj nowy post</a>
 
 @foreach($blogs as $data)
-    <h2><a href="blog/{{ $data->id }}">{{ $data -> title }}</a></h2>
+    <h2><a href="blog/show/{{ $data->id }}">{{ $data -> title }}</a></h2>
     <p>{{ $data->post }} </p>
     <p>{{ $data->author }} </p>
     <a href="blog/edit/{{ $data->id }}">Edytuj post</a>
