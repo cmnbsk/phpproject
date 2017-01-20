@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Blog extends Model
 {
-    //
+    protected $table = 'blog';
 }
