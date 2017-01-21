@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="../js/app.js"></script>
-    <link href="../css/app.css" rel="stylesheet">
 
 <h1>Szczegóły</h1>
 <p> Dodano {{ $detailpage -> created_at }}</p>
