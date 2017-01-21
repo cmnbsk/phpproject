@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+{{--Message section (post updated, created, deleted)--}}
+@if(Session::get('message'))
+    <div class="alert alert-info">
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+@endif
+
 @section('content')
     <script src="../js/app.js"></script>
     <link href="../css/app.css" rel="stylesheet">

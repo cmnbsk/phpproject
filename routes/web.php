@@ -20,13 +20,9 @@
 //    return view('errors/503');
 //});
 
-Route::get('/profile',function(){
-    return view('user/profile');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'BlogController@index');
 
 Route::get('/', 'BlogController@index');
 Route::get('create', 'BlogController@create');

@@ -8,79 +8,6 @@ use App\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-//    public function index()
-//    {
-//        //
-//    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-//    public function create()
-//    {
-//        //
-//    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-//    public function store(Request $request)
-//    {
-//
-//        if (Auth::check()) {
-//
-//            $this->validate($request, [
-//                'title' => 'required',
-//                'post' => 'required',
-//                'name' => 'required',
-//                'email' => 'required',
-//                'password' => 'required',
-//                'confirm_password' => 'required',
-//                'firstname' => 'required',
-//                'surname' => 'required',
-//                'country' => 'required',
-//                'city' => 'required',
-//                'age',
-//                'gender',
-//                'education',
-//                'interests',
-//                'about_me'
-//            ]);
-//
-//            $blog = new Blog;
-//            $blog->title = $request->title;
-//            $blog->post = $request->post;
-//            $blog->author = Auth::user()->firstname.' '.Auth::user()->surname;
-//            $blog->views = 0;
-//            $blog->save();
-//            return redirect('blog')->with('message', 'Post został dodany poprawnie.');
-//        }
-//        else{
-//            return view('errors.notLoggedIn');
-//        }
-//    }
-
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show(Request $request,$id)
-//    {
-//        //
-//    }
-
 //    /**
 //     * Show the form for editing the specified resource.
 //     *
@@ -98,7 +25,7 @@ class UserController extends Controller
             return view('user.profile')->with('useredit', $user);
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 
@@ -143,22 +70,11 @@ class UserController extends Controller
             $user->about_me = $request->about_me;
 
             $user->save();
-            //return redirect('user/profile')->with('message', 'Edycja powiodła się.');
-            return redirect('user/profile');
+            return redirect('user/profile')->with('message', 'Zmiany zostały zapisane. Możesz iść spać :P');
+            //return redirect('user/profile');
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function destroy($id)
-//    {
-//        //
-//    }
 }
