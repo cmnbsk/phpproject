@@ -4,7 +4,6 @@
     <link href="../css/app.css" rel="stylesheet">
     <script src="../js/app.js"></script>
 
-
 <h1>Edytuj post</h1>
 <form class="" action="{{ action('BlogController@update', $detailpage->id) }}" method="post">
     <input type="text" name="title" value="{{ $detailpage->title }}" placeholder="Tytuł">

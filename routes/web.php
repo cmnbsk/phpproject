@@ -20,13 +20,9 @@
 //    return view('errors/503');
 //});
 
-Route::get('/profile',function(){
-    return view('user/profile');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'BlogController@index');
 
 Route::get('/', 'BlogController@index');
 Route::get('create', 'BlogController@create');
@@ -37,4 +33,4 @@ Route::post('store', 'BlogController@store');
 Route::put('{id}', 'BlogController@update');
 
 Route::get('user/profile', 'UserController@edit');
-Route::put('user', 'UserController@update');
+Route::put('user/profile', 'UserController@update');

@@ -32,7 +32,7 @@ class BlogController extends Controller
             return view('blog.create');
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 
@@ -48,8 +48,7 @@ class BlogController extends Controller
         if (Auth::check()) {
             $this->validate($request, [
                 'title' => 'required',
-                'post' => 'required',
-                //'author' => 'required',
+                'post' => 'required'
             ]);
 
             $blog = new Blog;
@@ -61,7 +60,7 @@ class BlogController extends Controller
             return redirect('/')->with('message', 'Post został dodany poprawnie.');
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 
@@ -104,7 +103,7 @@ class BlogController extends Controller
             return view('blog.edit')->with('detailpage', $blog);
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 
@@ -130,7 +129,7 @@ class BlogController extends Controller
             return redirect('/')->with('message', 'Post został wyedytowany.');
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 
@@ -148,7 +147,7 @@ class BlogController extends Controller
             return redirect('/')->with('message', 'Post został usunięty.');
         }
         else{
-            return view('errors.notLoggedIn');
+            return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
 }

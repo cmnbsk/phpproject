@@ -1,9 +1,16 @@
 @extends('layouts.app')
 
-{{--Messages section (post updated, created, deleted)--}}
+{{--Info message section (post updated, created, deleted)--}}
 @if(Session::get('message'))
     <div class="alert alert-info">
         <strong>{{ Session::get('message') }}</strong>
+    </div>
+@endif
+
+{{--Error message section (not logged in etc.)--}}
+@if(Session::get('error'))
+    <div class="alert alert-danger">
+        <strong>{{ Session::get('error') }}</strong>
     </div>
 @endif
 
