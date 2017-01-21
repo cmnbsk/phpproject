@@ -17,8 +17,9 @@ class BlogController extends Controller
     public function index()
     {
             $blogs = Blog::all();
-
-            return view('blog.index', ['blogs' => $blogs]);
+            $a = $blogs->last()->id;
+            $a-=5;
+            return view('blog.lastPosts', ['blogs' => $blogs], ['a'=>$a]);
     }
 
     /**

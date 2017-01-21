@@ -94,6 +94,7 @@
         </nav>
         <div id="cont">
             @yield('content')
+
         </div>
         {{--@yield('content')--}}
     </div>
