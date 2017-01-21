@@ -20,6 +20,8 @@ class CreateBlogTable extends Migration
             $table->string('author');
             $table->timestamps();
             $table->integer('views');
+
+
         });
     }
 

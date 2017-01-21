@@ -3,6 +3,7 @@
 <h1>Mój blog</h1>
 @section('content')
 
+
     @if (!Auth::guest())
         <a href="blog/create">Dodaj nowy post</a>
     @endif
