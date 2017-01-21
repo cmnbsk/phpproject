@@ -13,6 +13,6 @@
     {{ $detailpage -> author }}
 </p>
 
-<p> Ostatnio edytowano {{ $detailpage -> updated_at }}</p>
+    <p> Ostatnio edytowano {{ $detailpage -> updated_at }} <i>Liczba wyświetleń: {{ $detailpage -> views }}</i></p>
 <a href="{{@action('BlogController@index')}}">Wróć do strony głównej</a>
 @endsection

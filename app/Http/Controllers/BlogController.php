@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -18,6 +19,7 @@ class BlogController extends Controller
 
 
             $blogs = Blog::all();
+
             return view('blog.index', ['blogs' => $blogs]);
 
     }
@@ -45,6 +47,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
         if (Auth::check()) {
             $this->validate($request, [
                 'title' => 'required',
@@ -56,8 +59,7 @@ class BlogController extends Controller
             $blog->title = $request->title;
             $blog->post = $request->post;
             $blog->author = $request->author;
-            $blog->updated_at = $request->updated_at;
-            $blog->created_at = $request->created_at;
+            $blog->views = $request->views=0;
             $blog->save();
             return redirect('blog')->with('message', 'Post został utworzony.');
         }
@@ -72,10 +74,14 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
 
         $blog = Blog::find($id);
+
+        $a = $blog->views;
+        $a++;
+        DB::table('blog')->update(['views' => $a]);
         if(!$blog){
             abort(404);
         }
