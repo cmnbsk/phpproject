@@ -18,12 +18,12 @@ class BlogController extends Controller
     {
         $blogs = Blog::all();
         if ($blogs->count() < 1) {
-            return view('blog.lastPosts', ['blogs' => $blogs]);
+            return view('blog.index', ['blogs' => $blogs]);
 
         } else {
             $a = $blogs->last()->id;
             $a -= 5;
-            return view('blog.lastPosts', ['blogs' => $blogs], ['a' => $a]);
+            return view('blog.index', ['blogs' => $blogs], ['a' => $a]);
         }
 
 
