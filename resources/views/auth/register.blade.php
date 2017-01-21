@@ -121,7 +121,7 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="age" value="{{ old('age') }}" required autofocus>
-                                    <option value="underage">mniej niż 16 lat</option>
+                                    <option value="mniej niż 16 lat">mniej niż 16 lat</option>
                                     <option value="16-19">16-19</option>
                                     <option value="20-24">20-24</option>
                                     <option value="25-29">25-29</option>
