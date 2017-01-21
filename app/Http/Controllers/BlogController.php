@@ -16,10 +16,17 @@ class BlogController extends Controller
      */
     public function index()
     {
-            $blogs = Blog::all();
+        $blogs = Blog::all();
+        if ($blogs->count() < 1) {
+            return view('blog.lastPosts', ['blogs' => $blogs]);
+
+        } else {
             $a = $blogs->last()->id;
-            $a-=5;
-            return view('blog.lastPosts', ['blogs' => $blogs], ['a'=>$a]);
+            $a -= 5;
+            return view('blog.lastPosts', ['blogs' => $blogs], ['a' => $a]);
+        }
+
+
     }
 
     /**
@@ -31,8 +38,7 @@ class BlogController extends Controller
     {
         if (Auth::check()) {
             return view('blog.create');
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
@@ -40,7 +46,7 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,12 +61,11 @@ class BlogController extends Controller
             $blog = new Blog;
             $blog->title = $request->title;
             $blog->post = $request->post;
-            $blog->author = Auth::user()->firstname.' '.Auth::user()->surname;
+            $blog->author = Auth::user()->firstname . ' ' . Auth::user()->surname;
             $blog->views = 0;
             $blog->save();
             return redirect('/')->with('message', 'Post został dodany poprawnie.');
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
@@ -68,22 +73,21 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$id)
+    public function show(Request $request, $id)
     {
 
         $blog = Blog::find($id);
-        if(!$blog){
+        if (!$blog) {
             abort(404);
-        }
-        else{
+        } else {
             $a = $blog->views;
             $a++;
             DB::table('blog')->update(['views' => $a]);
             $blog = Blog::find($id);
-            return view('blog.details') -> with('detailpage', $blog);
+            return view('blog.details')->with('detailpage', $blog);
         }
 
     }
@@ -91,7 +95,7 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -102,8 +106,7 @@ class BlogController extends Controller
                 abort(404);
             }
             return view('blog.edit')->with('detailpage', $blog);
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
@@ -111,8 +114,8 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,8 +131,7 @@ class BlogController extends Controller
             $blog->post = $request->post;
             $blog->save();
             return redirect('/')->with('message', 'Post został wyedytowany.');
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
@@ -137,7 +139,7 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -146,8 +148,7 @@ class BlogController extends Controller
             $blog = Blog::find($id);
             $blog->delete();
             return redirect('/')->with('message', 'Post został usunięty.');
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
