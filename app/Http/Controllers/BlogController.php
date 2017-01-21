@@ -16,12 +16,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-
-
             $blogs = Blog::all();
 
             return view('blog.index', ['blogs' => $blogs]);
-
     }
 
     /**
@@ -52,16 +49,16 @@ class BlogController extends Controller
             $this->validate($request, [
                 'title' => 'required',
                 'post' => 'required',
-                'author' => 'required',
+                //'author' => 'required',
             ]);
 
             $blog = new Blog;
             $blog->title = $request->title;
             $blog->post = $request->post;
-            $blog->author = $request->author;
-            $blog->views = $request->views=0;
+            $blog->author = Auth::user()->firstname.' '.Auth::user()->surname;
+            $blog->views = 0;
             $blog->save();
-            return redirect('blog')->with('message', 'Post został utworzony.');
+            return redirect('blog')->with('message', 'Post został dodany poprawnie.');
         }
     else{
         return view('errors.notLoggedIn');
