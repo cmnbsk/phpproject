@@ -58,7 +58,7 @@ class BlogController extends Controller
             $blog->author = Auth::user()->firstname.' '.Auth::user()->surname;
             $blog->views = 0;
             $blog->save();
-            return redirect('blog')->with('message', 'Post został dodany poprawnie.');
+            return redirect('/')->with('message', 'Post został dodany poprawnie.');
         }
         else{
             return view('errors.notLoggedIn');
@@ -82,6 +82,7 @@ class BlogController extends Controller
             $a = $blog->views;
             $a++;
             DB::table('blog')->update(['views' => $a]);
+            $blog = Blog::find($id);
             return view('blog.details') -> with('detailpage', $blog);
         }
 
@@ -126,7 +127,7 @@ class BlogController extends Controller
             $blog->title = $request->title;
             $blog->post = $request->post;
             $blog->save();
-            return redirect('blog')->with('message', 'Post został wyedytowany.');
+            return redirect('/')->with('message', 'Post został wyedytowany.');
         }
         else{
             return view('errors.notLoggedIn');
@@ -144,7 +145,7 @@ class BlogController extends Controller
         if (Auth::check()) {
             $blog = Blog::find($id);
             $blog->delete();
-            return redirect('blog')->with('message', 'Post został usunięty.');
+            return redirect('/')->with('message', 'Post został usunięty.');
         }
         else{
             return view('errors.notLoggedIn');

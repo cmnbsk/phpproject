@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <link href="../css/app.css" rel="stylesheet">
     <script src="../js/app.js"></script>
-    <link href="../../css/app.css" rel="stylesheet">
+
 
 <h1>Edytuj post</h1>
 <form class="" action="{{ action('BlogController@update', $detailpage->id) }}" method="post">

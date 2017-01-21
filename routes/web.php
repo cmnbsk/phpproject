@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 //TEST KONTROLERA
 //Route::get('/login', function(){
@@ -28,13 +28,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('blog', 'BlogController@index');
-Route::get('blog/create', 'BlogController@create');
-Route::get('blog/show/{id}', 'BlogController@show');
-Route::get('blog/edit/{id}', 'BlogController@edit');
-Route::delete('blog/destroy/{id}', 'BlogController@destroy');
-Route::post('blog/store', 'BlogController@store');
-Route::put('blog/{id}', 'BlogController@update');
+Route::get('/', 'BlogController@index');
+Route::get('create', 'BlogController@create');
+Route::get('show/{id}', 'BlogController@show');
+Route::get('edit/{id}', 'BlogController@edit');
+Route::delete('destroy/{id}', 'BlogController@destroy');
+Route::post('store', 'BlogController@store');
+Route::put('{id}', 'BlogController@update');
 
 Route::get('user/profile', 'UserController@edit');
 Route::put('user', 'UserController@update');

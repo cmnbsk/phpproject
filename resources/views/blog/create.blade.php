@@ -3,7 +3,6 @@
 @section('content')
     <script src="../js/app.js"></script>
     <link href="../css/app.css" rel="stylesheet">
-    <script src="../js/app.js"></script>
 <h1>Dodaj nowy post</h1>
     <form class="" action="{{ action('BlogController@store') }}" method="post">
 

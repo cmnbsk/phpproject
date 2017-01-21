@@ -36,7 +36,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/blog') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         Strona główna
                     </a>
                 </div>
