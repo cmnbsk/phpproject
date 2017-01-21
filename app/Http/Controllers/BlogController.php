@@ -78,16 +78,16 @@ class BlogController extends Controller
     {
 
         $blog = Blog::find($id);
-
-
         if(!$blog){
             abort(404);
         }
-        $a = $blog->views;
-        $a++;
-        DB::table('blog')->update(['views' => $a]);
-        return view('blog.details') -> with('detailpage', $blog);
-
+        else{
+            $a = $blog->views;
+            $a++;
+            DB::table('blog')->update(['views' => $a]);
+            $blog = Blog::find($id);
+            return view('blog.details') -> with('detailpage', $blog);
+        }
 
     }
 
