@@ -60,9 +60,9 @@ class BlogController extends Controller
             $blog->save();
             return redirect('blog')->with('message', 'Post został dodany poprawnie.');
         }
-    else{
-        return view('errors.notLoggedIn');
-    }
+        else{
+            return view('errors.notLoggedIn');
+        }
     }
 
     /**
@@ -82,7 +82,6 @@ class BlogController extends Controller
             $a = $blog->views;
             $a++;
             DB::table('blog')->update(['views' => $a]);
-            $blog = Blog::find($id);
             return view('blog.details') -> with('detailpage', $blog);
         }
 
