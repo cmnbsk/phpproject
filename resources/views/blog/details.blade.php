@@ -3,6 +3,7 @@
 @section('content')
 
     <link href="../../css/app.css" rel="stylesheet">
+    <script src="../js/app.js"></script>
 
 <h1>Szczegóły</h1>
 <p> Dodano {{ $detailpage -> created_at }}</p>

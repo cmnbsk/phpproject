@@ -52,8 +52,6 @@
                                 </ul>
                             </div>
 
-
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -73,19 +71,19 @@
                                                      document.getElementById('logout-form').submit();">
                                             Wyloguj
                                         </a>
-
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="blog/create">
+                                        <a href="{{ action('BlogController@create') }}">
                                             Dodaj nowy post
                                         </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                    </li>
+                                    <li>
+                                        <a href="{{ action('UserController@edit') }}">
+                                            Twój profil
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
