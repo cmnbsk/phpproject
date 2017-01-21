@@ -7,23 +7,23 @@
     <h1>Informacje o profilu</h1>
     <div class="container">
         <form class="" action="{{ action('UserController@update') }}" method="post">
-            <input type="text" name="firstname" value="{{ $useredit->firstname }}">
+            Imię: <input type="text" name="firstname" value="{{ $useredit->firstname }}">
             {{ ($errors->has('firstname')) ? $errors->first('firstname') : '' }}<br>
-            <input type="text" name="surname" value="{{ $useredit->surname }}">
+            Nazwisko: <input type="text" name="surname" value="{{ $useredit->surname }}">
             {{ ($errors->has('surname')) ? $errors->first('surname') : '' }}<br>
-            <input type="text" name="country" value="{{ $useredit->country }}">
+            Państwo: <input type="text" name="country" value="{{ $useredit->country }}">
             {{ ($errors->has('country')) ? $errors->first('country') : '' }}<br>
-            <input type="text" name="city" value="{{ $useredit->city }}">
+            Miasto: <input type="text" name="city" value="{{ $useredit->city }}">
             {{ ($errors->has('city')) ? $errors->first('city') : '' }}<br>
-            <input type="text" name="age" value="{{ $useredit->age }}">
+            Wiek: <input type="text" name="age" value="{{ $useredit->age }}">
             {{ ($errors->has('age')) ? $errors->first('age') : '' }}<br>
-            <input type="text" name="gender" value="{{ $useredit->gender }}">
+            Płeć: <input type="text" name="gender" value="{{ $useredit->gender }}">
             {{ ($errors->has('gender')) ? $errors->first('gender') : '' }}<br>
-            <input type="text" name="education" value="{{ $useredit->education }}">
+            Wykształcenie: <input type="text" name="education" value="{{ $useredit->education }}">
             {{ ($errors->has('education')) ? $errors->first('education') : '' }}<br>
-            <input type="text" name="interests" value="{{ $useredit->interests }}">
+            Zainteresowania: <input type="text" name="interests" value="{{ $useredit->interests }}">
             {{ ($errors->has('interests')) ? $errors->first('interests') : '' }}<br>
-            <input type="text" name="about_me" value="{{ $useredit->about_me }}">
+            O mnie: <input type="text" name="about_me" value="{{ $useredit->about_me }}">
             {{ ($errors->has('about_me')) ? $errors->first('about_me') : '' }}<br>
 
             {{-- <h2>Zmiana hasła:</h2>

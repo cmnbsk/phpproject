@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="../js/app.js"></script>
     <link href="../css/app.css" rel="stylesheet">
     <script src="../js/app.js"></script>
 <h1>Dodaj nowy post</h1>

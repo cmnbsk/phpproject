@@ -20,6 +20,10 @@ Route::get('/', function () {
 //    return view('errors/503');
 //});
 
+Route::get('/profile',function(){
+    return view('user/profile');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

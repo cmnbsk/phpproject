@@ -10,19 +10,6 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nazwa użytkownika: </label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             <label for="firstname" class="col-md-4 control-label">Imię: </label>
@@ -96,15 +83,15 @@
                             <div class="col-md-6">
 
                                 <select class="form-control" name="country" value="{{ old('country') }}" required autofocus>
-                                    <option value="england">Anglia</option>
-                                    <option value="belarus">Białoruś</option>
-                                    <option value="czech_republic">Czechy</option>
-                                    <option value="germany">Niemcy</option>
-                                    <option value="poland">Polska</option>
-                                    <option value="russia">Rosja</option>
-                                    <option value="slovakia">Słowacja</option>
-                                    <option value="sweden">Szwecja</option>
-                                    <option value="ukraine">Ukraina</option>
+                                    <option value="Anglia">Anglia</option>
+                                    <option value="Białoruś">Białoruś</option>
+                                    <option value="Czechy">Czechy</option>
+                                    <option value="Niemcy">Niemcy</option>
+                                    <option value="Polska">Polska</option>
+                                    <option value="Rosja">Rosja</option>
+                                    <option value="Słowacja">Słowacja</option>
+                                    <option value="Szwecja">Szwecja</option>
+                                    <option value="Ukraina">Ukraina</option>
                                 </select>
                                 @if ($errors->has('country'))
                                     <span class="help-block">
@@ -118,7 +105,7 @@
                             <label for="city" class="col-md-4 control-label">Miasto: </label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autofocus>
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -140,8 +127,7 @@
                                     <option value="30-39">30-39</option>
                                     <option value="40-49">40-49</option>
                                     <option value="50-59">50-59</option>
-                                    <option value="60 or more">60 lub więcej</option>
-
+                                    <option value="60 lub więcej">60 lub więcej</option>
                                 </select>
 
                                 @if ($errors->has('age'))
@@ -156,8 +142,8 @@
                             <label for="gender" class="col-md-4 control-label">Płeć: </label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="radio" name="gender" value="male" required autofocus> Mężczyzna
-                                <input id="gender" type="radio" name="gender" value="female" required autofocus> Kobieta
+                                <input id="gender" type="radio" name="gender" value="mężczyzna" required autofocus> Mężczyzna
+                                <input id="gender" type="radio" name="gender" value="kobieta" required autofocus> Kobieta
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">
@@ -172,11 +158,11 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="education" value="{{ old('education') }}" required autofocus>
-                                    <option value="primary">podstawowe</option>
-                                    <option value="lower_secondary">gimnazjalne</option>
-                                    <option value="vocational">zasadnicze/zawodowe</option>
-                                    <option value="secondary">średnie</option>
-                                    <option value="higher">wyższe</option>
+                                    <option value="podstawowe">podstawowe</option>
+                                    <option value="gimnazjalne">gimnazjalne</option>
+                                    <option value="zasadnicze/zawodowe">zasadnicze/zawodowe</option>
+                                    <option value="średni">średnie</option>
+                                    <option value="wyższe">wyższe</option>
 
                                 </select>
 
@@ -192,7 +178,7 @@
                             <label for="education" class="col-md-4 control-label">Zainteresowania: </label>
 
                             <div class="col-md-6">
-                                <input id="interests" type="text" class="form-control" name="interests" value="{{ old('interests') }}" required autofocus>
+                                <input id="interests" type="text" class="form-control" name="interests" value="{{ old('interests') }}" autofocus>
 
                                 @if ($errors->has('interests'))
                                     <span class="help-block">
@@ -206,7 +192,7 @@
                             <label for="about_me" class="col-md-4 control-label">O mnie: </label>
 
                             <div class="col-md-6">
-                                <input id="about_me" type="text" class="form-control" name="about_me" value="{{ old('about_me') }}" required autofocus>
+                                <input id="about_me" type="text" class="form-control" name="about_me" value="{{ old('about_me') }}" autofocus>
 
                                 @if ($errors->has('about_me'))
                                     <span class="help-block">
