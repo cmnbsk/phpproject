@@ -79,8 +79,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="blog/create"
-                                           >
+                                        <a href="blog/create">
                                             Dodaj nowy post
                                         </a>
 
