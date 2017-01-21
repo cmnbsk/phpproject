@@ -70,8 +70,7 @@ class UserController extends Controller
             $user->about_me = $request->about_me;
 
             $user->save();
-            return redirect('user/profile')->with('message', 'Zmiany zostały zapisane. Możesz iść spać :P');
-            //return redirect('user/profile');
+            return redirect('user/profile')->with('message', 'Zmiany zostały zapisane.');
         }
         else{
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');

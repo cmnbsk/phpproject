@@ -21,36 +21,36 @@
     </script>
 </head>
 <body>
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
 
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Strona główna
+                </a>
+            </div>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Strona główna
-                    </a>
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <div class="containter-fluid">
+                    <ul class="nav navbar-nav">
+                        <li><a href="">O mnie</a></li>
+                        <li><a href="">Kontakt</a></li>
+                        <li><a href="">O tobie</a></li>
+                        <li><a href="">Kilknij tutaj</a></li>
+                    </ul>
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                            <div class="containter-fluid">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="">O mnie</a></li>
-                                    <li><a href="">Kontakt</a></li>
-                                    <li><a href="">O tobie</a></li>
-                                    <li><a href="">Kilknij tutaj</a></li>
-                                </ul>
-                            </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -69,35 +69,36 @@
                                         <a href="{{ url('/logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Wyloguj
-                                        </a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <a href="{{ action('BlogController@create') }}">
-                                            Dodaj nowy post
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ action('UserController@edit') }}">
-                                            Twój profil
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+                                        Wyloguj
+                                    </a>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                <li>
+                                    <a href="{{ action('BlogController@create') }}">
+                                        Dodaj nowy post
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ action('UserController@edit') }}">
+                                        Twój profil
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
             </div>
-        </nav>
-        <div id="cont">
-            @yield('content')
         </div>
+    </nav>
+    <div id="cont">
+        @yield('content')
     </div>
-
-    <!-- Scripts -->
-    <script src="./js/app.js"></script>
+</div>
+<footer class="container-fluid">
+    <p>COPYRIGHT BY TWOJA STARA</p>
+</footer>
 </body>
 </html>
