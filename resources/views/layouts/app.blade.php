@@ -45,10 +45,10 @@
                     <!-- Left Side Of Navbar -->
                             <div class="containter-fluid">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="">nav1</a></li>
-                                    <li><a href="">nav2</a></li>
-                                    <li><a href="">nav3</a></li>
-                                    <li><a href="">nav4</a></li>
+                                    <li><a href="">O mnie</a></li>
+                                    <li><a href="">Kontakt</a></li>
+                                    <li><a href="">O tobie</a></li>
+                                    <li><a href="">Kilknij tutaj</a></li>
                                 </ul>
                             </div>
 
@@ -69,9 +69,18 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Wyloguj
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <a href="blog/create">
+                                            Dodaj nowy post
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

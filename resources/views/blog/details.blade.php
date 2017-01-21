@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <link href="../../css/app.css" rel="stylesheet">
 
 <h1>Szczegóły</h1>
