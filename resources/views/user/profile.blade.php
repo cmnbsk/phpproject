@@ -18,6 +18,8 @@
             {{ ($errors->has('firstname')) ? $errors->first('firstname') : '' }}<br>
             Nazwisko: <input type="text" name="surname" value="{{ $useredit->surname }}">
             {{ ($errors->has('surname')) ? $errors->first('surname') : '' }}<br>
+           E-mail: <input type="text" name="email" value="{{ $useredit->email }}">
+            {{ ($errors->has('email')) ? $errors->first('email') : '' }}<br>
             Państwo: <input type="text" name="country" value="{{ $useredit->country }}">
             {{ ($errors->has('country')) ? $errors->first('country') : '' }}<br>
             Miasto: <input type="text" name="city" value="{{ $useredit->city }}">
