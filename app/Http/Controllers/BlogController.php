@@ -61,7 +61,13 @@ class BlogController extends Controller
             $blog = new Blog;
             $blog->title = $request->title;
             $blog->post = $request->post;
-            $blog->author = Auth::user()->firstname . ' ' . Auth::user()->surname;
+            if(Auth::user()->firstname == '' || Auth::user()->surname == '' )
+                if(Auth::user()->email = 'admin@admin.com')
+                    $blog->author = 'Administrator';
+                else
+                    $blog->author = 'Nieznany';
+            else
+                $blog->author = Auth::user()->firstname . ' ' . Auth::user()->surname;
             $blog->views = 0;
             $blog->save();
             return redirect('/')->with('message', 'Post został dodany poprawnie.');
