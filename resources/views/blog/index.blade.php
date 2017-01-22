@@ -15,6 +15,7 @@
 @endif
 
 <h1>Mój blog</h1>
+
 @section('content')
     <div id="conts">
         @foreach($blogs->reverse() as $data)

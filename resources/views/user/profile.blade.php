@@ -8,7 +8,7 @@
 @endif
 
 @section('content')
-    <script src="../js/app.js"></script>
+
     <link href="../css/app.css" rel="stylesheet">
 
     <h1>Informacje o profilu</h1>
