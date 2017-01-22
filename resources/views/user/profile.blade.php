@@ -13,69 +13,168 @@
 
     <h1>Informacje o profilu</h1>
     <div class="container">
-        <form class="" action="{{ action('UserController@update') }}" method="post">
-            Imię: <input type="text" name="firstname" value="{{ $useredit->firstname }}">
-            {{ ($errors->has('firstname')) ? $errors->first('firstname') : '' }}<br>
-            Nazwisko: <input type="text" name="surname" value="{{ $useredit->surname }}">
-            {{ ($errors->has('surname')) ? $errors->first('surname') : '' }}<br>
-           E-mail: <input type="text" name="email" value="{{ $useredit->email }}">
-            {{ ($errors->has('email')) ? $errors->first('email') : '' }}<br>
-            Państwo: <input type="text" name="country" value="{{ $useredit->country }}">
-            {{ ($errors->has('country')) ? $errors->first('country') : '' }}<br>
-            Miasto: <input type="text" name="city" value="{{ $useredit->city }}">
-            {{ ($errors->has('city')) ? $errors->first('city') : '' }}<br>
-            Wiek: <input type="text" name="age" value="{{ $useredit->age }}">
-            {{ ($errors->has('age')) ? $errors->first('age') : '' }}<br>
-            Płeć: <input type="text" name="gender" value="{{ $useredit->gender }}">
-            {{ ($errors->has('gender')) ? $errors->first('gender') : '' }}<br>
-            Wykształcenie: <input type="text" name="education" value="{{ $useredit->education }}">
-            {{ ($errors->has('education')) ? $errors->first('education') : '' }}<br>
-            Zainteresowania: <input type="text" name="interests" value="{{ $useredit->interests }}">
-            {{ ($errors->has('interests')) ? $errors->first('interests') : '' }}<br>
-            O mnie: <input type="text" name="about_me" value="{{ $useredit->about_me }}">
-            {{ ($errors->has('about_me')) ? $errors->first('about_me') : '' }}<br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="{{ action('UserController@update') }}" method="post">
+                            <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
+                                Imię: <input type="text" name="firstname" class="form-control"
+                                             value="{{ $useredit->firstname }}" autofocus>
 
-            {{-- <h2>Zmiana hasła:</h2>
-             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                 <label for="password" class="col-md-4 control-label">Podaj stare hasło: </label>
 
-                 <div class="col-md-6">
-                     <input id="password" type="password" class="form-control" name="password" required>
+                                {{ ($errors->has('firstname')) ? $errors->first('firstname') : '' }}<br>
+                                Nazwisko: <input type="text" class="form-control" name="surname"
+                                                 value="{{ $useredit->surname }}" autofocus>
+                                {{ ($errors->has('surname')) ? $errors->first('surname') : '' }}<br>
+                                E-mail: <input type="text" class="form-control" name="email"
+                                               value="{{ $useredit->email }}" autofocus>
+                                {{ ($errors->has('email')) ? $errors->first('email') : '' }}<br>
+                                <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
 
-                     @if ($errors->has('password'))
-                         <span class="help-block">
-                                         <strong>{{ $errors->first('password') }}</strong>
-                                     </span>
-                     @endif
-                 </div>
-             </div>
 
-             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                 <label for="password" class="col-md-4 control-label">Nowe hasło: </label>
+                                    <div class="col-md-6">
 
-                 <div class="col-md-6">
-                     <input id="password" type="password" class="form-control" name="password" required>
+                                        Kraj: <select class="form-control" name="country" value="{{ old('country') }}"
+                                                      required
+                                                      autofocus>
+                                            <option value="Anglia">Anglia</option>
+                                            <option value="Białoruś">Białoruś</option>
+                                            <option value="Czechy">Czechy</option>
+                                            <option value="Niemcy">Niemcy</option>
+                                            <option value="Polska">Polska</option>
+                                            <option value="Rosja">Rosja</option>
+                                            <option value="Słowacja">Słowacja</option>
+                                            <option value="Szwecja">Szwecja</option>
+                                            <option value="Ukraina">Ukraina</option>
+                                        </select>
+                                        @if ($errors->has('country'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                Miasto: <input type="text" class="form-control" name="city"
+                                               value="{{ $useredit->city }}" autofocus>
+                                {{ ($errors->has('city')) ? $errors->first('city') : '' }}<br>
+                                <div class="form-group{{ $errors->has('age') ? ' has-error' : '' }}">
 
-                     @if ($errors->has('password'))
-                         <span class="help-block">
-                                         <strong>{{ $errors->first('password') }}</strong>
-                                     </span>
-                     @endif
-                 </div>
-             </div>
+                                    <div class="col-md-6">
+                                        Wiek: <select class="form-control" name="age" value="{{ old('age') }}" required
+                                                      autofocus>
+                                            <option value="mniej niż 16 lat">mniej niż 16 lat</option>
+                                            <option value="16-19">16-19</option>
+                                            <option value="20-24">20-24</option>
+                                            <option value="25-29">25-29</option>
+                                            <option value="30-39">30-39</option>
+                                            <option value="40-49">40-49</option>
+                                            <option value="50-59">50-59</option>
+                                            <option value="60 lub więcej">60 lub więcej</option>
+                                        </select>
 
-             <div class="form-group">
-                 <label for="password-confirm1" class="col-md-4 control-label">Potwierdź nowe hasło: </label>
+                                        @if ($errors->has('age'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('age') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
 
-                 <div class="col-md-6">
-                     <input id="password-confirm1" type="password" class="form-control" name="password_confirmation" required>
-                 </div>
-             </div>--}}
 
-            <input type="hidden" name="_method" value="put">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="submit" name="name" value="Zapisz zmiany">
-        </form>
+                                    <div class="col-md-6">
+                                        Płeć: <input id="gender" type="radio" name="gender" value="mężczyzna" required
+                                                     autofocus>
+                                        Mężczyzna
+                                        <input id="gender" type="radio" name="gender" value="kobieta" required
+                                               autofocus>
+                                        Kobieta
+
+                                        @if ($errors->has('gender'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('education') ? ' has-error' : '' }}">
+
+
+                                    <div class="col-md-6">
+                                        Wykształcenie: <select class="form-control" name="education"
+                                                               value="{{ old('education') }}"
+                                                               required autofocus>
+                                            <option value="podstawowe">podstawowe</option>
+                                            <option value="gimnazjalne">gimnazjalne</option>
+                                            <option value="zasadnicze/zawodowe">zasadnicze/zawodowe</option>
+                                            <option value="średnie">średnie</option>
+                                            <option value="wyższe">wyższe</option>
+
+                                        </select>
+
+                                        @if ($errors->has('education'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('education') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                Zainteresowania: <input type="text" class="form-control" name="interests"
+                                                        value="{{ $useredit->interests }}" autofocus>
+                                {{ ($errors->has('interests')) ? $errors->first('interests') : '' }}<br>
+                                O mnie: <input type="text" class="form-control" name="about_me"
+                                               value="{{ $useredit->about_me }}" autofocus>
+                                {{ ($errors->has('about_me')) ? $errors->first('about_me') : '' }}<br>
+
+                                {{-- <h2>Zmiana hasła:</h2>
+                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                     <label for="password" class="col-md-4 control-label">Podaj stare hasło: </label>
+
+                                     <div class="col-md-6">
+                                         <input id="password" type="password" class="form-control" name="password" required>
+
+                                         @if ($errors->has('password'))
+                                             <span class="help-block">
+                                                             <strong>{{ $errors->first('password') }}</strong>
+                                                         </span>
+                                         @endif
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                     <label for="password" class="col-md-4 control-label">Nowe hasło: </label>
+
+                                     <div class="col-md-6">
+                                         <input id="password" type="password" class="form-control" name="password" required>
+
+                                         @if ($errors->has('password'))
+                                             <span class="help-block">
+                                                             <strong>{{ $errors->first('password') }}</strong>
+                                                         </span>
+                                         @endif
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <label for="password-confirm1" class="col-md-4 control-label">Potwierdź nowe hasło: </label>
+
+                                     <div class="col-md-6">
+                                         <input id="password-confirm1" type="password" class="form-control" name="password_confirmation" required>
+                                     </div>
+                                 </div>--}}
+
+                                <input type="hidden" name="_method" value="put">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-primary" name="name" value="Zapisz zmiany">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 @endsection
 
