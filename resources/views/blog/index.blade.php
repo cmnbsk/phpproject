@@ -18,13 +18,20 @@
 
 @section('content')
     <div id="conts">
+        Ostatnio dodane:<br>
         @foreach($blogs->reverse() as $data)
 
-            @if($data->id>=$a)
+            @if($data->id>=$c)
                 <h5><a href="show/{{ $data->id }}">{{ $data -> title }}</a></h5>
-
             @endif
+
+
         @endforeach
+        <br>
+            Najpopularniejsze:<br>
+            @foreach($b as $data2)
+                <h5><a href="show/{{ $data2->id }}">{{ $data2 -> title }}</a></h5>
+                @endforeach
     </div>
 
     @if (!Auth::guest())

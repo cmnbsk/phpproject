@@ -22,9 +22,12 @@ class BlogController extends Controller
             return view('blog.index', ['blogs' => $blogs]);
 
         } else {
-            $a = $blogs->last()->id;
-            $a -= 5;
-            return view('blog.index', ['blogs' => $blogs], ['a' => $a]);
+            $c = $blogs->last()->id;
+            $c -= 5;
+
+            $b=DB::table('blog')->orderBy('views', 'desc')->take(3)->get();
+
+            return view('blog.index', compact('blogs','c','b'));
         }
 
 
@@ -92,7 +95,8 @@ class BlogController extends Controller
         } else {
             $a = $blog->views;
             $a++;
-            DB::table('blog')->update(['views' => $a]);
+
+            DB::table('blog')->where('id', $id)->update(['views' => $a]);
             $blog = Blog::find($id);
             return view('blog.details')->with('detailpage', $blog);
         }
