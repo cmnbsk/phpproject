@@ -39,26 +39,24 @@ class UserController extends Controller
     public function update(Request $request)
     {
         if (Auth::check()) {
-//            $this->validate($request, [
-//                'name' => 'required|max:30',
-//                'email' => 'required|max:100',
+            $this->validate($request, [
+                'email' => 'required|max:100',
 //                'old_password' => 'max:50',
 //                'new_password' => 'max:50',
 //                'confirm_password' => 'max:50',
-//                'firstname' => 'required|max:50',
-//                'surname' => 'required|max:50',
-//                'country' => 'max:50',
-//                'city' => 'max:50',
-//                'age' => 'max:3',
-//                'gender' => 'max:10',
-//                'education' => 'max:50',
-//                'interests' => 'max:100',
-//                'about_me' => 'max:300',
-//            ]);
+                'firstname' => 'required|max:50',
+                'surname' => 'required|max:50',
+                'country' => 'max:50',
+                'city' => 'max:50',
+                'age' => 'max:20',
+                'gender' => 'required|max:10',
+                'education' => 'max:50',
+                'interests' => 'max:100',
+                'about_me' => 'max:300',
+            ]);
 
             $user = User::find(Auth::user()->id);
 
-//           $user->name = $request->name;
             $user->firstname = $request->firstname;
             $user->surname = $request->surname;
             $user->country = $request->country;
