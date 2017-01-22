@@ -147,7 +147,7 @@
                                 <label for="gender" class="col-md-4 control-label">Płeć: </label>
 
                                 <div class="col-md-6">
-                                    <input id="gender" type="radio" name="gender" value="mężczyzna" required autofocus>
+                                    <input id="gender" type="radio" name="gender" value="mężczyzna" required autofocus checked="checked">
                                     Mężczyzna
                                     <input id="gender" type="radio" name="gender" value="kobieta" required autofocus>
                                     Kobieta

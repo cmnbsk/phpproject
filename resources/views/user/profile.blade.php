@@ -36,6 +36,9 @@
                                         Kraj: <select class="form-control" name="country" value="{{ old('country') }}"
                                                       required
                                                       autofocus>
+                                            <option selected="selected">
+                                                {{ $useredit->country }}
+                                            </option>
                                             <option value="Anglia">Anglia</option>
                                             <option value="Białoruś">Białoruś</option>
                                             <option value="Czechy">Czechy</option>
@@ -61,6 +64,9 @@
                                     <div class="col-md-6">
                                         Wiek: <select class="form-control" name="age" value="{{ old('age') }}" required
                                                       autofocus>
+                                            <option selected="selected">
+                                                {{ $useredit->age }}
+                                            </option>
                                             <option value="mniej niż 16 lat">mniej niż 16 lat</option>
                                             <option value="16-19">16-19</option>
                                             <option value="20-24">20-24</option>
@@ -85,7 +91,7 @@
                                         Płeć: <input id="gender" type="radio" name="gender" value="mężczyzna" required
                                                      autofocus>
                                         Mężczyzna
-                                        <input id="gender" type="radio" name="gender" value="kobieta" required
+                                        <input id="gender" type="radio" name="gender" value="kobieta"  required
                                                autofocus>
                                         Kobieta
 
@@ -103,6 +109,9 @@
                                         Wykształcenie: <select class="form-control" name="education"
                                                                value="{{ old('education') }}"
                                                                required autofocus>
+                                            <option selected="selected">
+                                                {{ $useredit->education }}
+                                            </option>
                                             <option value="podstawowe">podstawowe</option>
                                             <option value="gimnazjalne">gimnazjalne</option>
                                             <option value="zasadnicze/zawodowe">zasadnicze/zawodowe</option>

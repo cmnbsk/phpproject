@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
+
 class UserController extends Controller
 {
 //    /**
@@ -23,8 +24,7 @@ class UserController extends Controller
                 abort(404);
             }
             return view('user.profile')->with('useredit', $user);
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             $this->validate($request, [
-                'email' => 'required|max:100',
+                'email' => 'required|max:35',
 //                'old_password' => 'max:50',
 //                'new_password' => 'max:50',
 //                'confirm_password' => 'max:50',
@@ -49,7 +49,7 @@ class UserController extends Controller
                 'country' => 'max:50',
                 'city' => 'max:50',
                 'age' => 'max:20',
-                'gender' => 'required|max:10',
+                'gender' => 'required',
                 'education' => 'max:50',
                 'interests' => 'max:100',
                 'about_me' => 'max:300',
@@ -69,9 +69,12 @@ class UserController extends Controller
 
             $user->save();
             return redirect('user/profile')->with('message', 'Zmiany zostały zapisane.');
-        }
-        else{
+        } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
+
+
+
+
 }
