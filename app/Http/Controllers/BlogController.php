@@ -18,6 +18,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::all();
         if ($blogs->count() < 1) {
+
             return view('blog.index', ['blogs' => $blogs]);
 
         } else {

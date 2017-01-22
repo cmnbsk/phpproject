@@ -14,14 +14,18 @@ class DatabaseSeeder extends Seeder
     {
 
         //Admin account seed
-        if(DB::table('users'))DB::table('users')->delete();
+//        if (DB::table('users'))
+//            DB::table('users')->delete();
+
         DB::table('users')->insert([
             'email' => 'admin@admin.pl',
             'password' => bcrypt('admin'),
         ]);
 
         //Some example blog posts
-        if(DB::table('blog'))DB::table('blog')->delete();
+//        if (DB::table('blog'))
+//            DB::table('blog')->delete();
+
         DB::table('blog')->insert([
             'title' => 'Witams',
             'post' => 'Dzień dobry! Witam na moim blogu. Mamy tutaj dwie drużyny. Kto dziś zwycięży? Dowiemy się już za chwilę!',

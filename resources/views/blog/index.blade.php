@@ -34,7 +34,9 @@
     @foreach($blogs->reverse() as $data)
         <h2><a href="show/{{ $data->id }}">{{ $data -> title }}</a></h2>
         <h5>Autor: {{ $data->author }} </h5>
-        <p>{{ $data->post }} </p>
+        {{--<p>{{ $data->post }}    --}}
+        <p>{{ str_limit($data->post, 250) }}
+                </p>
 
         @if (!Auth::guest())  <a href="edit/{{ $data->id }}">Edytuj post</a>
         <form class="" action="{{ action('BlogController@destroy', $data->id) }}" method="post">
@@ -46,6 +48,5 @@
         @endif
         <hr>
     @endforeach
-
 @endsection
 
