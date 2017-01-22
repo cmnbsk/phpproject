@@ -9,8 +9,6 @@
 
 @section('content')
 
-    <link href="../css/app.css" rel="stylesheet">
-
     <h1>Informacje o profilu</h1>
     <div class="container">
         <div class="row">
