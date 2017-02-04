@@ -54,8 +54,8 @@
                                     Zaloguj się
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Zapomniałeś hasła? Kliknij tutaj!
+                                <a class="btn btn-link" href="{{ url('/register') }}">
+                                    Nie masz jeszcze konta? Kliknij tutaj!
                                 </a>
                             </div>
                         </div>

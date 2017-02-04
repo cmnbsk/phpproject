@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-
 class UserController extends Controller
 {
 //    /**
@@ -40,17 +39,12 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             $this->validate($request, [
-                'email' => 'required|max:35',
-//                'old_password' => 'max:50',
-//                'new_password' => 'max:50',
-//                'confirm_password' => 'max:50',
+                'email' => 'required|max:100',
                 'firstname' => 'required|max:50',
                 'surname' => 'required|max:50',
-                'country' => 'max:50',
                 'city' => 'max:50',
                 'age' => 'max:20',
                 'gender' => 'required',
-                'education' => 'max:50',
                 'interests' => 'max:100',
                 'about_me' => 'max:300',
             ]);
@@ -59,11 +53,9 @@ class UserController extends Controller
 
             $user->firstname = $request->firstname;
             $user->surname = $request->surname;
-            $user->country = $request->country;
             $user->city = $request->city;
             $user->age = $request->age;
             $user->gender = $request->gender;
-            $user->education = $request->education;
             $user->interests = $request->interests;
             $user->about_me = $request->about_me;
 
@@ -73,8 +65,4 @@ class UserController extends Controller
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }
     }
-
-
-
-
 }

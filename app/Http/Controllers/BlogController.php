@@ -18,16 +18,16 @@ class BlogController extends Controller
     {
         $blogs = Blog::all();
         if ($blogs->count() < 1) {
-
             return view('blog.index', ['blogs' => $blogs]);
 
         } else {
-            $c = $blogs->last()->id;
-            $c -= 5;
+            //$last_id = $blogs->last()->id;
+            //$last_id -= 5;
+            $last_post = DB::table('blog')->orderBy('created_at','desc')->take(5)->get();
 
-            $b=DB::table('blog')->orderBy('views', 'desc')->take(3)->get();
+            $most_popular = DB::table('blog')->orderBy('views', 'desc')->take(3)->get();
 
-            return view('blog.index', compact('blogs','c','b'));
+            return view('blog.index', compact('blogs', 'last_post', 'most_popular'));
         }
 
 
@@ -58,15 +58,15 @@ class BlogController extends Controller
 
         if (Auth::check()) {
             $this->validate($request, [
-                'title' => 'required',
-                'post' => 'required'
+                'title' => 'required|max:100',
+                'post' => 'required|max:30000'
             ]);
 
             $blog = new Blog;
             $blog->title = $request->title;
             $blog->post = $request->post;
-            if(Auth::user()->firstname == '' || Auth::user()->surname == '' )
-                if(Auth::user()->email = 'admin@admin.com')
+            if (Auth::user()->firstname == '' || Auth::user()->surname == '')
+                if (Auth::user()->email = 'admin@admin.com')
                     $blog->author = 'Administrator';
                 else
                     $blog->author = 'Nieznany';
@@ -88,6 +88,13 @@ class BlogController extends Controller
      */
     public function show(Request $request, $id)
     {
+        $blogs = Blog::all();
+        //$last_id = $blogs->last()->id;
+        //$last_id -= 5;
+        $last_post = DB::table('blog')->orderBy('created_at','desc')->take(5)->get();
+        $most_popular = DB::table('blog')->orderBy('views', 'desc')->take(3)->get();
+
+        //return view('blog.index', compact('blogs', 'last_id', 'most_popular'));
 
         $blog = Blog::find($id);
         if (!$blog) {
@@ -95,12 +102,10 @@ class BlogController extends Controller
         } else {
             $a = $blog->views;
             $a++;
-
             DB::table('blog')->where('id', $id)->update(['views' => $a]);
             $blog = Blog::find($id);
-            return view('blog.details')->with('detailpage', $blog);
+            return view('blog.details')->with('detailpage', $blog)->with('blogs', $blogs)->with('last_post', $last_post)->with('most_popular', $most_popular);
         }
-
     }
 
     /**
@@ -141,7 +146,7 @@ class BlogController extends Controller
             $blog->title = $request->title;
             $blog->post = $request->post;
             $blog->save();
-            return redirect('/')->with('message', 'Post został wyedytowany.');
+            return redirect('/')->with('message', 'Post został zapisany.');
         } else {
             return redirect('/')->with('error', 'Nie masz dostępu do tej strony.');
         }

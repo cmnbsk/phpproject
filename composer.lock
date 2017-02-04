@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bff2f416af74bbb13fc6c1ac49a83e7f",
+    "content-hash": "c80426714ab8d871d561dd5f389cf510",
     "packages": [
+        {
+            "name": "bestmomo/laravel5-3-installer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestmomo/laravel5-3-installer.git",
+                "reference": "efd25a8e170a143380aae17f156e0e30eaa3780a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestmomo/laravel5-3-installer/zipball/efd25a8e170a143380aae17f156e0e30eaa3780a",
+                "reference": "efd25a8e170a143380aae17f156e0e30eaa3780a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bestmomo\\Installer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bestmomo",
+                    "email": "grandheretique@free.fr"
+                }
+            ],
+            "description": "Helper for Laravel 5.3 application installation",
+            "homepage": "http://github.com/bestmomo/laravel5-3-installer",
+            "time": "2016-09-13T12:07:51+00:00"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.1.0",
